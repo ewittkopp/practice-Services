@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="card mx-auto w-50 my-1">
+    <div class="card-body">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <!-- Task Name and Badge -->
+        <h5 class="mb-0">
+          {{ task().name }}
+          <sup class="ms-1">
+            <span class="badge" [class]="badgeClass()">
+              {{ task().status }}
+            </span>
+          </sup>
+        </h5>
+
+        <!-- Actions: Update & Delete -->
+        <div class="d-flex align-items-center gap-2">
+          <!-- Dropdown for status update -->
+          <div class="dropdown">
+            <button
+              type="button"
+              class="btn btn-sm btn-secondary dropdown-toggle"
+              data-bs-toggle="dropdown"
+            >
+              Update Status
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <button class="dropdown-item text-warning" (click)="onSetTo('Active')">
+                  Active
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item text-danger" (click)="onSetTo('In-Active')">
+                  In-Active
+                </button>
+              </li>
+              <li>
+                <button class="dropdown-item text-success" (click)="onSetTo('Completed')">
+                  Completed
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Delete button -->
+          <button class="btn btn-sm btn-danger" (click)="onDeleteTask()">
+            <i class="bi bi-trash"></i>
+            <!-- Bootstrap Icon for Trash button 
+              Note to include, bootstrap icons, 
+              1. installed bootstrap-icons using npm install bootstrap-icons
+              2. Added "node_modules/bootstrap-icons/font/bootstrap-icons.css" to styles array in angular.json.
+            -->
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

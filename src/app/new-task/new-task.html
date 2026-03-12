@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="card mx-auto w-50">
+    <div class="card-body">
+      <div class="form-group">
+        <label><h5>Enter New Task Name:</h5></label>
+        <!-- 
+          [class.is-invalid]="showWarning() - class is-invalid when showWarning is true and will display a red color border and boostrap warning
+          (input)="showWarning.set(false) - will set showWarning to false if a input is provided.
+        -->
+        <input
+          type="text"
+          class="form-control"
+          #taskName
+          [class.is-invalid]="showWarning()"
+          (input)="showWarning.set(false)"
+        />
+      </div>
+      <!-- display inline warning if task name is not provided -->
+      @if (showWarning()) {
+        <div class="invalid-feedback d-block">Task Name is required!</div>
+      }
+      <button class="btn btn-primary" (click)="onCreateTask(taskName)">Add Task</button>
+    </div>
+  </div>
+</div>
