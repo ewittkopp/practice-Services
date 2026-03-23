@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { TaskItem } from '../models/task-item';
 import { NewTask } from '../new-task/new-task';
 import { TaskStatus } from '../models/task-item';
@@ -9,6 +9,7 @@ import { TaskStatus } from '../models/task-item';
 export class TaskService {
   // tasks:TaskItem[] = []
   tasks = signal<TaskItem[]>([]);
+  taskCount = computed(() => this.tasks().length);
 
   addTask(taskName: string) {
     const NewTask: TaskItem = {
